@@ -18,18 +18,18 @@ public class Program
         
         BlobServiceClient serviceClient = new BlobServiceClient(new Uri(blobServiceEndpoint), accountCredentials);
         
-        AccountInfo info = await serviceClient.GetAccountInfoAsync();
+        // AccountInfo info = await serviceClient.GetAccountInfoAsync();
         
-        await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
-        await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
-        await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
-        await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
+        // await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
+        // await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
+        // await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
+        // await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
         
-        await EnumerateContainersAsync(serviceClient);
+        // await EnumerateContainersAsync(serviceClient);
 
         // Exsiting 
-        string existingContainerName = "raster-graphics";
-        await EnumerateBlobsAsync(serviceClient, existingContainerName);
+        // string existingContainerName = "raster-graphics";
+        // await EnumerateBlobsAsync(serviceClient, existingContainerName);
 
         // Create Blob new
         string newContainerName = "vector-graphics";
@@ -39,26 +39,23 @@ public class Program
         BlobClient blobClient = await GetBlobAsync(containerClient, uploadedBlobName);
         await Console.Out.WriteLineAsync($"Blob Url:\t{blobClient.Uri}");
 
-
-
-
     }
 
-    private static async Task EnumerateContainersAsync(BlobServiceClient client){
-        await foreach (BlobContainerItem container in client.GetBlobContainersAsync()){
-            await Console.Out.WriteLineAsync($"Container:\t{container.Name}");
-        }
-    }
+    // private static async Task EnumerateContainersAsync(BlobServiceClient client){
+    //     await foreach (BlobContainerItem container in client.GetBlobContainersAsync()){
+    //         await Console.Out.WriteLineAsync($"Container:\t{container.Name}");
+    //     }
+    // }
 
-    private static async Task EnumerateBlobsAsync(BlobServiceClient client, string containerName){
-        BlobContainerClient container = client.GetBlobContainerClient(containerName);
+    // private static async Task EnumerateBlobsAsync(BlobServiceClient client, string containerName){
+    //     BlobContainerClient container = client.GetBlobContainerClient(containerName);
 
-        await Console.Out.WriteLineAsync($"Searching:\t{container.Name}");
+    //     await Console.Out.WriteLineAsync($"Searching:\t{container.Name}");
 
-        await foreach (BlobItem blob in container.GetBlobsAsync()){
-            await Console.Out.WriteLineAsync($"Existing Blob:\t{blob.Name}");
-        }
-    }
+    //     await foreach (BlobItem blob in container.GetBlobsAsync()){
+    //         await Console.Out.WriteLineAsync($"Existing Blob:\t{blob.Name}");
+    //     }
+    // }
 
     private static async Task<BlobContainerClient> GetContainerAsync(BlobServiceClient client, string containerName){
         BlobContainerClient container = client.GetBlobContainerClient(containerName);await container.CreateIfNotExistsAsync(PublicAccessType.Blob);
@@ -71,7 +68,5 @@ public class Program
         await Console.Out.WriteLineAsync($"Blob Found:\t{blob.Name}");
         return blob;
     }
-
-
 
 }
