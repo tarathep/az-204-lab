@@ -1,9 +1,7 @@
 # az-204-lab
 AZ-204: Developing solutions for Microsoft Azure
 
-### Labs
-
-Module	Lab
+### Modules & Labs
 
 - Module 01: Create Azure App Service Web Apps : Build a web application on Azure platform as a service offerings
 
