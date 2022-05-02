@@ -11,12 +11,12 @@
 
     public class Program
     {
-        private const string EndpointUrl = "";
-        private const string AuthorizationKey = "";
+        private const string EndpointUrl = "https://polycosmoskie.documents.azure.com:443/";
+        private const string AuthorizationKey = "qOCu75shPs6iH6z9LnmYb1PTMfTLWSFe7B6mn1raeUkyCjN52mdYc85WrveNPzBS1PsFOr9fwhwqMBlCv706Gw==";
         private const string DatabaseName = "Retail";
         private const string ContainerName = "Online";
-        private const string PartitionKey = "";
-        private const string JsonFilePath = "";
+        private const string PartitionKey = "/Category";
+        private const string JsonFilePath = "C:\\Users\\Bokie\\az-204-lab\\04\\AdventureWorks\\AdventureWorks.Upload\\models.json";
 
         static private int amountToInsert;
         static List<Model> models;
